@@ -154,7 +154,9 @@ while (true)
 
     }
 
-    string decodedMsg = Kodavimo_teorija.Decoder.Decode(sentMsg);
+    string decodedMsgWithFill = Kodavimo_teorija.Decoder.Decode(sentMsg);
+
+    string decodedMsg = decodedMsgWithFill.Substring(0, decodedMsgWithFill.Length - fillAmount);
 
     Console.WriteLine("\n\ndecoded message: " + decodedMsg);
 
