@@ -97,12 +97,17 @@ while (true)
 
 // coding, sending and decoding
 
+    int fillAmount = 0;
 
     Console.Clear();
 
-    string codedMsg = Coder.code(bitArray);
+    string filledBitArray = Coder.FillBitArray(bitArray,ref fillAmount);
+    //string filledBitArray = bitArray;
+
+    string codedMsg = Coder.code(filledBitArray);
 
     Console.WriteLine("coded message: " + codedMsg + "\n");
+    Console.WriteLine("fill amount: " + fillAmount.ToString());
 
     string sentMsg;
     try
