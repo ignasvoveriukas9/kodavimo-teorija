@@ -12,4 +12,16 @@ public static class Coder
 
         return output;
     }
+
+    public static string FillBitArray(string bitArray,ref int fill)
+    {
+        string output = bitArray;
+        while (output.Length % 12 != 0)
+        {
+            output += "0";
+            fill += 1;
+        }
+
+        return output;
+    }
 }
