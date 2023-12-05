@@ -7,7 +7,7 @@ public static class Coder
     {
         string output = input;
 
-        // Example matrix
+        // Golay B matrix
         int[,] matrix = new int[,]
         {
             {1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1},
