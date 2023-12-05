@@ -100,15 +100,13 @@ while (true)
     int fillAmount = 0;
 
     Console.Clear();
-
-    Console.WriteLine("bitArray lenght: " + bitArray.Length);
+    
     string filledBitArray = Coder.FillBitArray(bitArray,ref fillAmount);
     //string filledBitArray = bitArray;
 
     string codedMsg = Coder.code(filledBitArray);
 
     Console.WriteLine("coded message: " + codedMsg + "\n");
-    Console.WriteLine("fill amount: " + fillAmount.ToString());
 
     string sentMsg;
     try
@@ -160,7 +158,6 @@ while (true)
     string decodedMsg = decodedMsgWithFill.Substring(0, decodedMsgWithFill.Length - fillAmount);
 
     Console.WriteLine("\n\ndecoded message: " + decodedMsg);
-    Console.WriteLine("decoded msg lenght: " + decodedMsg.Length);
 
 // if text
     if (inputSelect == "2")
