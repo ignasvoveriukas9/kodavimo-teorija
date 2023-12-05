@@ -101,6 +101,7 @@ while (true)
 
     Console.Clear();
 
+    Console.WriteLine("bitArray lenght: " + bitArray.Length);
     string filledBitArray = Coder.FillBitArray(bitArray,ref fillAmount);
     //string filledBitArray = bitArray;
 
@@ -128,7 +129,7 @@ while (true)
     {
         if (sentMsg[i] != codedMsg[i])
         {
-            errors.Add(i);
+            errors.Add(i+1);
         }
     }
 
@@ -159,6 +160,7 @@ while (true)
     string decodedMsg = decodedMsgWithFill.Substring(0, decodedMsgWithFill.Length - fillAmount);
 
     Console.WriteLine("\n\ndecoded message: " + decodedMsg);
+    Console.WriteLine("decoded msg lenght: " + decodedMsg.Length);
 
 // if text
     if (inputSelect == "2")
@@ -196,7 +198,7 @@ while (true)
             text.Append((char)byteValue);
         }
 
-        Console.WriteLine("decoded text: " + text.ToString());
+        Console.WriteLine("decoded text: " + text.ToString() + ".end");
 // if image    
     }
     else if (inputSelect == "3")

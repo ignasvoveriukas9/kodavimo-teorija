@@ -5,31 +5,33 @@ public static class Coder
 {
     public static string code(string input)
     {
-        string output = input;
-
         // Golay B matrix
         int[,] matrix = new int[,]
         {
-            {1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1},
-            {1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0}, 
-            {0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0},
-            {1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1},
-            {1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0},
-            {1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
-            {0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0},
-            {0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0},
-            {0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1},
-            {1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0},
-            {0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+            {1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0},
+            {1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1}, 
+            {0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1},
+            {1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0},
+            {1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1},
+            {1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1},
+            {0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1},
+            {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0},
+            {0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0},
+            {1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0},
+            {0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
 
-        // Multiply binary vector with matrix;
-        string multipledByMetrix = MultiplyBinaryVectorWithMatrix(input, matrix);
+        List<String> substrings = StringTool.DivideString(input, 12);
+        List<String> codedSubstrings = new List<string>();
 
-        output += multipledByMetrix;
+        foreach (var substring in substrings)
+        {
+            // Multiply binary vector with matrix;
+            codedSubstrings.Add(substring + MultiplyBinaryVectorWithMatrix(substring, matrix));
+        }
 
-        return output;
+        return StringTool.CombineStrings(codedSubstrings);
     }
 
     public static string FillBitArray(string bitArray,ref int fill)
