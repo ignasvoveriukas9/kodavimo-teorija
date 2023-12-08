@@ -7,13 +7,16 @@ string bitArray;
 
 while (true)
 {
-    
+    String inputText;
     Random rnd = new Random();
     
     // user input
     
     Console.WriteLine("Klaidos tikimybe:");
     string input = Console.ReadLine();
+
+    input = input.Replace(',', '.');
+    
     byte[] headerData = null;
     string outputPath = null;
 
@@ -37,6 +40,7 @@ while (true)
 
         Console.WriteLine("Enter the code:");
         bitArray = Console.ReadLine();
+        inputText = "";
 
     }
     else if (inputSelect == "2")
@@ -52,7 +56,7 @@ while (true)
             sb.AppendLine(line);
         }
 
-        String inputText = sb.ToString();
+        inputText = sb.ToString();
 
         // convert to bit
         byte[] bytes = Encoding.UTF8.GetBytes(inputText);
@@ -61,6 +65,7 @@ while (true)
     }
     else if (inputSelect == "3")
     {
+        inputText = "";
         Console.WriteLine("Enter the image location:");
         string imagePath = Console.ReadLine();
         Console.WriteLine("Enter the output destination location:");
@@ -162,7 +167,9 @@ while (true)
 // if text
     if (inputSelect == "2")
     {
-        // without coding
+        Console.WriteLine("\nOriginal text:\n" + inputText.ToString());
+
+            // without coding
         string textMsgWithoutCode;
         try
         {
@@ -183,7 +190,7 @@ while (true)
             textWithoutCode.Append((char)byteValue);
         }
 
-        Console.WriteLine("Text sent without coding: " + textWithoutCode.ToString());
+        Console.WriteLine("Text sent without coding:\n" + textWithoutCode.ToString());
         
         //with coding
         StringBuilder text = new StringBuilder();
@@ -195,7 +202,7 @@ while (true)
             text.Append((char)byteValue);
         }
 
-        Console.WriteLine("decoded text: " + text.ToString() + ".end");
+        Console.WriteLine("decoded text:\n" + text.ToString());
 // if image    
     }
     else if (inputSelect == "3")
