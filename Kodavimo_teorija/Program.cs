@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using System.Globalization;
 using Kodavimo_teorija;
 using System.Text;
 
@@ -23,7 +25,7 @@ while (true)
     float errorProb;
     try
     {
-        errorProb = float.Parse(input);
+        errorProb = float.Parse(input,CultureInfo.InvariantCulture);
     }
     catch
     {
