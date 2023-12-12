@@ -12,7 +12,7 @@ public static class Sender
 
         foreach (var bit in input)
         {
-            if (rnd.NextDouble() <= errorProb)
+            if (rnd.NextDouble() < errorProb)
             {
                 if (bit == '1')
                 {
