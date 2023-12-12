@@ -40,8 +40,19 @@ while (true)
     if (inputSelect == "1")
     {
 
-        Console.WriteLine("Enter the code:");
-        bitArray = Console.ReadLine();
+        while (true)
+        {
+            Console.WriteLine("Enter the vector (12 bits):");
+            bitArray = Console.ReadLine();
+            if (bitArray.Length == 12)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("vector not of length 12");
+            }
+        }
         inputText = "";
 
     }
@@ -146,22 +157,37 @@ while (true)
         Console.Write(i.ToString() + " ");
     }
 
+    // edit vector if bit array input
     if (inputSelect == "1")
     {
         
         Console.WriteLine("\nDo you want to edit sent message? (y/n)");
+        
         string edit = Console.ReadLine();
 
         if (edit == "y")
         {
-            Console.WriteLine("Enter the edited message:");
-            sentMsg = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Enter the edited message(23 bits):");
+                string sentMsgEdited = Console.ReadLine();
+                if (sentMsgEdited.Length == 23)
+                {
+                    sentMsg = sentMsgEdited;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("vector not of length 23");
+                }
+            }
         }
 
     }
 
+    // decoded msg with fill bits
     string decodedMsgWithFill = Kodavimo_teorija.Decoder.Decode(sentMsg);
-
+    // decoded msg with fill bits removed
     string decodedMsg = decodedMsgWithFill.Substring(0, decodedMsgWithFill.Length - fillAmount);
 
     Console.WriteLine("\n\ndecoded message: " + decodedMsg);
@@ -171,7 +197,7 @@ while (true)
     {
         Console.WriteLine("\nOriginal text:\n" + inputText.ToString());
 
-            // without coding
+        // sending without coding
         string textMsgWithoutCode;
         try
         {
@@ -226,8 +252,7 @@ while (true)
         // Save the complete image data to a BMP file
         File.WriteAllBytes(outputPath + "/codedImage", fullImageData);
 
-        //without coding
-
+        //sending without coding
         string imgWithoutCoding = Sender.send(bitArray, errorProb, rnd);
         
         dataLength = imgWithoutCoding.Length / 8;
