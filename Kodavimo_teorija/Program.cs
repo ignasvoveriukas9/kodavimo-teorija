@@ -60,7 +60,7 @@ while (true)
     {
 
         // read user text
-        Console.WriteLine("Enter your text (press Ctrl+Z or Ctrl+D to end input):");
+        Console.WriteLine("Enter your text (press Ctrl+Z and enter in a new line or Ctrl+D twice to end input):");
 
         StringBuilder sb = new StringBuilder();
         string line;
